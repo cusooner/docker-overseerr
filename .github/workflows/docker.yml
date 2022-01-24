@@ -23,6 +23,12 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v2
+      - name: docker login
+        env: 
+          DOCKER_USER: ${{ secrets.DOCKER_USER }} 
+          DOCKER_PASS: ${{ secrets.DOCKER_PASS }} 
+        run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASS
       - name: docker build overseerr
         run: |
           docker build . -t thebungler/overseerr:1.28.0
