@@ -31,8 +31,10 @@ jobs:
           docker login -u $DOCKER_USER -p $DOCKER_PASS
       - name: docker build overseerr
         run: |
-          docker build . -t thebungler/overseerr:1.28.0
+          docker build . -t overseerr
       - name: docker push
         run: |
-          docker tag thebungler/overseerr:1.28.0 thebungler/overseerr:latest
-          docker push thebungler/overseerr:1.28.0
+          docker tag overseerr thebungler/overseerr:latest
+          docker tag overseerr thebungler/overseerr:1.28.0
+          docker image push --all-tags thebungler/overseerr
+
