@@ -32,3 +32,7 @@ jobs:
       - name: docker build overseerr
         run: |
           docker build . -t thebungler/overseerr:1.28.0
+      - name: docker push
+        run: |
+          docker tag thebungler/overseerr:1.28.0 thebungler/overseerr:latest
+          docker push thebungler/overseerr:1.28.0
