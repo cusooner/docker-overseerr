@@ -1,5 +1,6 @@
 Experimental image for my personal learning project.
 
+[![Actions Status](https://github.com/thebungler/docker-overseerr/workflows/Docker%20Build/badge.svg)](https://github.com/thebungler/overseerr/actions)
 
 ## Usage
 
