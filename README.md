@@ -7,20 +7,20 @@ Experimental image for my personal learning project.
 ```shell
 docker run -d \
     -p 5055:5055 \
-    -v $PWD/config:/config \
+    -v /blahblah/config:/config \
     thebungler/overseerr
 ```
 
 ## Environment
 
-- `$SUID`         - User ID to run as. _default: `952`_
-- `$SGID`         - Group ID to run as. _default: `952`_
-- `$TZ`           - Timezone. _optional_
+- `$SUID`         - User ID to run as. 
+- `$SGID`         - Group ID to run as. 
+- `$TZ`           - Timezone
 
 ## Volume
 
-- `/config`       - Server configuration file location.
+- `/config`       - where config is stored
 
 ## Network
 
-- `5055/tcp`      - WebUI
+- `5055/tcp`      - web interface
