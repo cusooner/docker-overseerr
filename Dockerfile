@@ -1,4 +1,7 @@
-FROM node:14.18-alpine AS BUILD_IMAGE
+ARG BASEIMAGE=node:14.18-alpine
+
+
+FROM ${BASEIMAGE} AS BUILD_IMAGE
 ARG VERSION
 ENV VERSION=${VERSION:-v1.28.0}
 
@@ -22,12 +25,21 @@ RUN rm -rf src server .next/cache
 
 RUN touch config/DOCKER
 
-FROM node:14.18-alpine
+# =============================================================================
+FROM ${BASEIMAGE}
 WORKDIR /app
 
 RUN apk add --no-cache tzdata tini && rm -rf /tmp/*
 
+LABEL org.label-schema.name="overseerr" \
+      org.label-schema.description="Request management and media discovery tool for the Plex ecosystem" \
+      org.label-schema.url="https://docs.overseerr.dev" \
+      org.label-schema.version=${VERSION}
+
 COPY --from=BUILD_IMAGE /app ./
+
+HEALTHCHECK --start-period=120s --interval=60s --timeout=10s \
+    CMD wget -qO /dev/null "http://localhost:5055/api/v1/status"
 
 ENTRYPOINT [ "/sbin/tini", "--" ]
 CMD [ "yarn", "start" ]
