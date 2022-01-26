@@ -30,8 +30,8 @@ jobs:
 
       - name: docker hub push
         run: |
-          docker tag overseerr thebungler/overseerr:latest
-          docker tag overseerr thebungler/overseerr:1.28.0
+          docker tag thebungler/overseerr thebungler/overseerr:latest
+          docker tag thebungler/overseerr thebungler/overseerr:1.28.0
           docker image push --all-tags thebungler/overseerr
 
       - name: docker hub description
