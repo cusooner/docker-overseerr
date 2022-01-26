@@ -34,10 +34,3 @@ jobs:
           docker tag thebungler/overseerr thebungler/overseerr:1.28.0
           docker image push --all-tags thebungler/overseerr
 
-      - name: docker hub description
-        uses: peter-evans/dockerhub-description@v2
-        with:
-          username: ${{ secrets.DOCKER_USER }}
-          password: ${{ secrets.DOCKER_PASS }}
-          repository: peterevans/dockerhub-description
-
