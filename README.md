@@ -11,6 +11,21 @@ docker run -d \
     thebungler/overseerr
 ```
 
+```docker-compose
+  overseerr:
+    image: thebungler/overseerr:latest
+    container_name: overseerr
+    environment:
+      - PUID=1001
+      - PGID=100
+      - TZ=Europe/Berlin
+    volumes:
+      - /mydockervol/overseerr:/config
+    ports:
+      - 5055:5055
+    restart: unless-stopped
+```
+
 ## Environment
 
 - `$SUID`         - User ID to run as. 
