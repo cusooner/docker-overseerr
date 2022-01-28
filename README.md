@@ -4,6 +4,7 @@ Experimental image for my personal learning project.
 
 ## Usage
 
+shell
 ```shell
 docker run -d \
     -p 5055:5055 \
@@ -11,6 +12,7 @@ docker run -d \
     thebungler/overseerr
 ```
 
+docker-compose
 ```docker-compose
   overseerr:
     image: thebungler/overseerr:latest
@@ -28,8 +30,6 @@ docker run -d \
 
 ## Environment
 
-- `$SUID`         - User ID to run as. 
-- `$SGID`         - Group ID to run as. 
 - `$TZ`           - Timezone
 
 ## Volume
