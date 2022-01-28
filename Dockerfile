@@ -17,9 +17,9 @@ RUN curl -o /tmp/overseerr.tar.gz -L "https://github.com/sct/overseerr/archive/v
     done && \
     rm /tmp/overseerr.tar.gz
 
-RUN --mount=type=cache,target=/root/.yarn YARN_CACHE_FOLDER=/root/.yarn yarn install --frozen-lockfile --network-timeout 1000000 
-RUN --mount=type=cache,target=./node_modules/.cache/webpack yarn run build
-RUN --mount=type=cache,target=/root/.yarn YARN_CACHE_FOLDER=/root/.yarn yarn install --production --ignore-scripts --prefer-offline
+RUN yarn install --frozen-lockfile --network-timeout 1000000 
+RUN yarn run build
+RUN yarn install --production --ignore-scripts --prefer-offline
 
 #ENV COMMIT_TAG=${VERSION} 
 # RUN echo "{\"commitTag\": \"${COMMIT_TAG}\"}" > committag.json && \
